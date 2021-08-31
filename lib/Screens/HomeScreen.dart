@@ -1,5 +1,7 @@
+import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:endometriosis/Models/MainModel.dart';
+import 'package:endometriosis/helpers/MainCategoriesDataBase.dart';
 import 'package:endometriosis/helpers/NavHelper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
@@ -13,7 +15,8 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   Size size;
-
+  int _bottomNavIndex = 0;
+  
   List<MainModel> mainList = [
     MainModel(
       id: 1,
@@ -50,16 +53,6 @@ class _HomeScreenState extends State<HomeScreen> {
       icon: "assets/images/reproductive.png",
       text: "معرفی مراکز درمانی",
     ),
-    MainModel(
-      id: 1,
-      icon: "assets/images/reproductive.png",
-      text: "ارزیابی اپلیکیشن",
-    ),
-    MainModel(
-      id: 1,
-      icon: "assets/images/contact.png",
-      text: "تماس با ما",
-    ),
   ];
 
   @override
@@ -67,6 +60,32 @@ class _HomeScreenState extends State<HomeScreen> {
     size = MediaQuery.of(context).size;
     return SafeArea(
       child: Scaffold(
+        floatingActionButton: FloatingActionButton(
+          backgroundColor: Colors.amber,
+          child: Center(
+            child: Icon(Icons.home,color: Colors.white,),
+          ),
+          //params
+        ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+        bottomNavigationBar: AnimatedBottomNavigationBar(
+          backgroundColor: Colors.white24,
+          inactiveColor: Colors.white,
+          activeColor: Colors.amber,
+          icons: [
+            Icons.call,
+            Icons.local_library_outlined,
+            Icons.assessment_outlined,
+            Icons.home,
+          ],
+          activeIndex: _bottomNavIndex,
+          gapLocation: GapLocation.center,
+          notchSmoothness: NotchSmoothness.verySmoothEdge,
+          // leftCornerRadius: 32,
+          // rightCornerRadius: 32,
+          onTap: (index) => setState(() => _bottomNavIndex = index),
+          //other params
+        ),
         backgroundColor: Colors.transparent,
         appBar: AppBar(
           centerTitle: true,
