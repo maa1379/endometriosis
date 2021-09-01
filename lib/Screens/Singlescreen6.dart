@@ -2,17 +2,19 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class SingleScreen extends StatefulWidget {
+class SingleScreen6 extends StatefulWidget {
   @override
-  _SingleScreenState createState() => _SingleScreenState();
+  _SingleScreen6State createState() => _SingleScreen6State();
 }
 
-class _SingleScreenState extends State<SingleScreen> {
+class _SingleScreen6State extends State<SingleScreen6> {
   Size size;
 
   @override
   Widget build(BuildContext context) {
-    size = MediaQuery.of(context).size;
+    size = MediaQuery
+        .of(context)
+        .size;
     return Directionality(
       textDirection: TextDirection.rtl,
       child: SafeArea(
@@ -76,7 +78,7 @@ class _SingleScreenState extends State<SingleScreen> {
                                 ]),
                             child: Center(
                               child: AutoSizeText(
-                                "بیماری اندومتریوز چی هست ؟",
+                                "روش های درمانی",
                                 maxFontSize: 22,
                                 minFontSize: 10,
                                 textAlign: TextAlign.start,
@@ -95,9 +97,13 @@ class _SingleScreenState extends State<SingleScreen> {
                             height: size.height,
                             width: size.width,
                             child: AutoSizeText(
-                              "اندومتریوز یکی از بیماریهای شایع زنان است که 17-2 درصد زنان سنین باروری رو تحت تأثیر قرار می دهد. 70-60 درصد زنان مبتلا به اندومتریوز از برخی اختلالات مانند کیفیت زندگی نامناسب، افسردگی و اضطراب، دردهای حاد و مزمن، دردهای لگنی، خستگی، قاعدگی دردناک، خونریزی شدید قاعدگی، درد هنگام نزدیکی و نازایی رنج می برند."
-                              "این بیماری می‌تواند با آغاز سن بلوغ در دختران ایجاد شود، بنابراین مادرانی که دختران نوجوان و جوان دارند نباید نسبت به علائمی مانند دردهای شدید قاعدگی بی‌توجه باشند و لازم است بیماری اندومتریوز از همان سنین نوجوانی در تشخیصهای پزشکی مدنظر قرار گیرد."
-                              "  بیماری اندومتریوز (Endometriosis ) با کاشته شدن بافت دیواره ی داخلی رحم (اندومتر) در مناطق غیر طبیعی میتواند بدلیل جریان ِبرگشتی ِخون ِقاعدگی، از طریق لوله های رَحِمی به داخل شکم و حفره ی لگن اتفاق بیفتد‌.",
+                              "درمان اندومتریوز معمولا دارویی یا جراحی است. انتخاب درمان مناسب به شدت علائم و نشانه‌ها و تمایل بیمار به باردار شدن بستگی دارد. معمولا پزشک ابتدا درمان‌های دارویی را پیشنهاد می‌کند و اگر این درمان‌ها شکست خوردند، روش‌های جراحی انجام می‌شوند. هدف از درمان اندومتریوز برطرف شدن علائم و درصورت تمایل بیمار افزایش احتمال باروری است."
+                              "داروهای درد: معمولا مسکن‌های بدون نسخه از جمله ضد التهاب‌های غیراستروئیدی مانند ایبوپروفن یا  HYPERLINK https://doctoreto.com/blog/%d8%af%d8%a7%d8%b1%d9%88%db%8c-%d9%86%d8%a7%d9%be%d8%b1%d9%88%da%a9%d8%b3%d9%86/ناپروکسن سدیم برای کاهش درد کرامپی قاعدگی توصیه می‌شوند."
+                            "درمان هورمونی: در مورد افرادی که تمایلی به بارداری ندارند، این درمان درکنار مسکن‌ها پیشنهاد می‌شوند. مکمل‌های هورمونی می‌توانند با کاهش رشد بافت اندومتریوم نابجا و جلوگیری از ایجاد بافت نابجای جدید باعث کاهش یا قطع درد شوند اما درمان دائمی نیستند و با قطع داروها علائم ممکن است بازگردند."
+                            "جراحی: جراحی در مورد بیمارانی که علائم شدید دارند و یا بیمارانی که دچار انسداد لوله‌ها، روده‌ها یا مثانه َشده باشند و همچنین در مورد بیمارانی که اختلال ساختاری در سیستم تناسلی دارند، می‌تواند درمان انتخابی باشد. جراحی به دو دسته،  تقسیم می شود."
+                              "جراحی محافظتی : در آن رحم و تخمدان‌ها حفظ می‌شوند"
+                            "جراحی مطلق:  در آن رحم با یا بدون تخمدان‌ها برداشته می‌شود، تقسیم می‌شود"
+                              ,
                               maxFontSize: 22,
                               minFontSize: 10,
                               textAlign: TextAlign.center,

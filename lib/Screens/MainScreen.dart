@@ -1,10 +1,8 @@
-import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:endometriosis/Models/MainModel.dart';
 import 'package:endometriosis/helpers/NavHelper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
-import 'SingleScreen.dart';
 import 'SingleScreen2.dart';
 import 'SingleScreen3.dart';
 import 'SingleScreen4.dart';
@@ -12,17 +10,18 @@ import 'SingleScreen5.dart';
 import 'SingleScreen7.dart';
 import 'SingleScreen8.dart';
 import 'Singlescreen6.dart';
+import 'SingleScreen.dart';
 
-class HomeScreen extends StatefulWidget {
+
+class MainScreen extends StatefulWidget {
+
   @override
-  _HomeScreenState createState() => _HomeScreenState();
+  _MainScreenState createState() => _MainScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _MainScreenState extends State<MainScreen> {
   Size size;
-  int _bottomNavIndex = 0;
   final GlobalKey<ScaffoldState> _key = GlobalKey();
-  PageController pageController = PageController();
   List<MainModel> mainList = [
     MainModel(
       id: 1,
@@ -78,43 +77,9 @@ class _HomeScreenState extends State<HomeScreen> {
     size = MediaQuery.of(context).size;
     return Directionality(
       textDirection: TextDirection.rtl,
-      child: SafeArea(
-        child: Scaffold(
-          key: _key,
-          drawer: ClipRRect(
-            borderRadius: BorderRadius.circular(25),
-            child: Container(
-              height: size.height * .8,
-              width: size.width * .8,
-              decoration: BoxDecoration(
-                color: Colors.white,
-              ),
-              child: Drawer(),
-            ),
-          ),
-          bottomNavigationBar: AnimatedBottomNavigationBar(
-            backgroundColor: Colors.white24,
-            inactiveColor: Colors.white,
-            activeColor: Colors.amber,
-            icons: [
-              Icons.home,
-              Icons.local_library_outlined,
-              Icons.assessment_outlined,
-              Icons.call,
-            ],
-            activeIndex: _bottomNavIndex,
-            gapLocation: GapLocation.center,
-            notchSmoothness: NotchSmoothness.verySmoothEdge,
-            // leftCornerRadius: 32,
-            // rightCornerRadius: 32,
-            onTap: (index) => setState(() {
-              _bottomNavIndex = index;
-              pageController.animateToPage(index,
-                  duration: Duration(milliseconds: 300), curve: Curves.bounceIn);
-            }),
-            //other params
-          ),
-          backgroundColor: Colors.transparent,
+      child: Scaffold(
+        key: _key,
+        backgroundColor: Colors.black,
           appBar: AppBar(
             centerTitle: true,
             elevation: 0,
@@ -130,25 +95,27 @@ class _HomeScreenState extends State<HomeScreen> {
           body: Container(
             height: size.height,
             width: size.width,
-            // margin: EdgeInsets.symmetric(vertical: size.height * .1 , horizontal: size.width * .05),
-            child: PageView(
-              controller: pageController,
-              onPageChanged: (page) {
-                setState(() {
-                  _bottomNavIndex = page;
-                });
-              },
-              children: [
-                _buildGridViewMeno(),
-                Container(),
-                Container(),
-              ],
-            ),
-          ),
-        ),
-      ),
+            margin: EdgeInsets.only(top: size.height * .06),
+            child: _buildGridViewMeno(),
+          )),
     );
   }
+
+
+  _buildGridViewMeno() {
+    return AnimationLimiter(
+      child: GridView.builder(
+          itemCount: mainList.length,
+          physics: BouncingScrollPhysics(),
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            childAspectRatio: 1.2,
+            // mainAxisSpacing: 0.1
+          ),
+          itemBuilder: _buildSunListItem),
+    );
+  }
+
 
   Widget _buildSunListItem(BuildContext context, int index) {
     var item = mainList[index];
@@ -190,7 +157,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     flex: 1,
                     child: Padding(
                       padding:
-                          EdgeInsets.symmetric(horizontal: size.width * .02),
+                      EdgeInsets.symmetric(horizontal: size.width * .02),
                       child: Padding(
                         padding: EdgeInsets.only(bottom: size.height * .01),
                         child: AutoSizeText(
@@ -214,20 +181,6 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
       ),
-    );
-  }
-
-  _buildGridViewMeno() {
-    return AnimationLimiter(
-      child: GridView.builder(
-          itemCount: mainList.length,
-          physics: BouncingScrollPhysics(),
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-            childAspectRatio: 1.2,
-            // mainAxisSpacing: 0.1
-          ),
-          itemBuilder: _buildSunListItem),
     );
   }
 }

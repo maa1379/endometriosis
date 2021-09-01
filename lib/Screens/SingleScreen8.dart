@@ -2,12 +2,12 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class SingleScreen extends StatefulWidget {
+class SingleScreen8 extends StatefulWidget {
   @override
-  _SingleScreenState createState() => _SingleScreenState();
+  _SingleScreen8State createState() => _SingleScreen8State();
 }
 
-class _SingleScreenState extends State<SingleScreen> {
+class _SingleScreen8State extends State<SingleScreen8> {
   Size size;
 
   @override
@@ -76,7 +76,7 @@ class _SingleScreenState extends State<SingleScreen> {
                                 ]),
                             child: Center(
                               child: AutoSizeText(
-                                "بیماری اندومتریوز چی هست ؟",
+                                "معرفی مراکز درمانی اندومتریوز",
                                 maxFontSize: 22,
                                 minFontSize: 10,
                                 textAlign: TextAlign.start,
@@ -95,9 +95,9 @@ class _SingleScreenState extends State<SingleScreen> {
                             height: size.height,
                             width: size.width,
                             child: AutoSizeText(
-                              "اندومتریوز یکی از بیماریهای شایع زنان است که 17-2 درصد زنان سنین باروری رو تحت تأثیر قرار می دهد. 70-60 درصد زنان مبتلا به اندومتریوز از برخی اختلالات مانند کیفیت زندگی نامناسب، افسردگی و اضطراب، دردهای حاد و مزمن، دردهای لگنی، خستگی، قاعدگی دردناک، خونریزی شدید قاعدگی، درد هنگام نزدیکی و نازایی رنج می برند."
-                              "این بیماری می‌تواند با آغاز سن بلوغ در دختران ایجاد شود، بنابراین مادرانی که دختران نوجوان و جوان دارند نباید نسبت به علائمی مانند دردهای شدید قاعدگی بی‌توجه باشند و لازم است بیماری اندومتریوز از همان سنین نوجوانی در تشخیصهای پزشکی مدنظر قرار گیرد."
-                              "  بیماری اندومتریوز (Endometriosis ) با کاشته شدن بافت دیواره ی داخلی رحم (اندومتر) در مناطق غیر طبیعی میتواند بدلیل جریان ِبرگشتی ِخون ِقاعدگی، از طریق لوله های رَحِمی به داخل شکم و حفره ی لگن اتفاق بیفتد‌.",
+                              "\nبیمارستان رسول اکرم"
+                              "\nمرکز ابن سینا"
+                              "\nبیمارستان آرش",
                               maxFontSize: 22,
                               minFontSize: 10,
                               textAlign: TextAlign.center,
