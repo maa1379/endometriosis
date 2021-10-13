@@ -1,9 +1,13 @@
-import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
+import 'dart:io';
+
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:endometriosis/Models/MainModel.dart';
 import 'package:endometriosis/helpers/NavHelper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
+import 'ContactUsScreen.dart';
+import 'RateAppScreen.dart';
 import 'SingleScreen.dart';
 import 'SingleScreen2.dart';
 import 'SingleScreen3.dart';
@@ -21,6 +25,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   Size size;
   int _bottomNavIndex = 0;
+  GlobalKey<CurvedNavigationBarState> _bottomNavigationKey = GlobalKey();
   final GlobalKey<ScaffoldState> _key = GlobalKey();
   PageController pageController = PageController();
   List<MainModel> mainList = [
@@ -38,8 +43,8 @@ class _HomeScreenState extends State<HomeScreen> {
     ),
     MainModel(
       id: 1,
-      icon: "assets/images/reproductive.png",
-      text: "علت درد در اندومتریوز پیست؟",
+      icon: "assets/images/1.png",
+      text: "علت درد در اندومتریوز چیست؟",
       widget: SingleScreen3(),
     ),
     MainModel(
@@ -51,7 +56,7 @@ class _HomeScreenState extends State<HomeScreen> {
     MainModel(
       id: 1,
       icon: "assets/images/reproductive.png",
-      text: "برسی های تشخیصی",
+      text: "بررسی های تشخیصی",
       widget: SingleScreen5(),
     ),
     MainModel(
@@ -86,46 +91,300 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Container(
               height: size.height * .8,
               width: size.width * .8,
-              decoration: BoxDecoration(
-                color: Colors.white,
+              color: Colors.red,
+              child: Drawer(
+                child: Padding(
+                  padding: EdgeInsets.only(left: size.width * .1),
+                  child: Column(
+                    children: [
+                      SizedBox(
+                        height: size.height * .02,
+                      ),
+                      Image.asset(
+                        "assets/images/logo.png",
+                        width: size.width * .5,
+                      ),
+                      SizedBox(
+                        height: size.height * .05,
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          NavHelper.push(
+                            context,
+                            ContactUsScreen(),
+                          );
+                        },
+                        child: Column(
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal: size.width * .05),
+                                  child: Row(
+                                    children: [
+                                      Icon(
+                                        Icons.call,
+                                        color: Colors.amber,
+                                      ),
+                                      SizedBox(
+                                        width: size.width * .03,
+                                      ),
+                                      Text("ارتباط با ما"),
+                                    ],
+                                  ),
+                                ),
+                                Icon(Icons.arrow_forward_ios_outlined,
+                                    size: size.width * .04,
+                                    color: Colors.amber),
+                              ],
+                            ),
+                            Padding(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: size.width * .05),
+                              child: Divider(),
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        height: size.height * .02,
+                      ),
+                      GestureDetector(
+                        onTap: (){
+
+                        },
+                        child: Column(
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal: size.width * .05),
+                                  child: Row(
+                                    children: [
+                                      Icon(
+                                        Icons.local_library_outlined,
+                                        color: Colors.amber,
+                                      ),
+                                      SizedBox(
+                                        width: size.width * .03,
+                                      ),
+                                      Text("درباره ما"),
+                                    ],
+                                  ),
+                                ),
+                                Icon(Icons.arrow_forward_ios_outlined,
+                                    size: size.width * .04, color: Colors.amber),
+                              ],
+                            ),
+                            Padding(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: size.width * .05),
+                              child: Divider(),
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        height: size.height * .02,
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          NavHelper.push(context, SingleScreen8());
+                        },
+                        child: Column(
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal: size.width * .05),
+                                  child: Row(
+                                    children: [
+                                      Icon(
+                                        Icons.local_hospital_outlined,
+                                        color: Colors.amber,
+                                      ),
+                                      SizedBox(
+                                        width: size.width * .03,
+                                      ),
+                                      Text("مراکز درمانی"),
+                                    ],
+                                  ),
+                                ),
+                                Icon(Icons.arrow_forward_ios_outlined,
+                                    size: size.width * .04,
+                                    color: Colors.amber),
+                              ],
+                            ),
+                            Padding(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: size.width * .05),
+                              child: Divider(),
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        height: size.height * .02,
+                      ),
+                      Column(
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Padding(
+                                padding: EdgeInsets.symmetric(
+                                    horizontal: size.width * .05),
+                                child: Row(
+                                  children: [
+                                    Icon(
+                                      Icons.share_outlined,
+                                      color: Colors.amber,
+                                    ),
+                                    SizedBox(
+                                      width: size.width * .03,
+                                    ),
+                                    Text("معرفی به دوستان"),
+                                  ],
+                                ),
+                              ),
+                              Icon(Icons.arrow_forward_ios_outlined,
+                                  size: size.width * .04, color: Colors.amber),
+                            ],
+                          ),
+                          Padding(
+                            padding: EdgeInsets.symmetric(
+                                horizontal: size.width * .05),
+                            child: Divider(),
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: size.height * .02,
+                      ),
+                      Column(
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Padding(
+                                padding: EdgeInsets.symmetric(
+                                    horizontal: size.width * .05),
+                                child: Row(
+                                  children: [
+                                    Icon(
+                                      Icons.mail_outline_outlined,
+                                      color: Colors.amber,
+                                    ),
+                                    SizedBox(
+                                      width: size.width * .03,
+                                    ),
+                                    Text("با نظر خود مارا حمایت کنید"),
+                                  ],
+                                ),
+                              ),
+                              Icon(Icons.arrow_forward_ios_outlined,
+                                  size: size.width * .04, color: Colors.amber),
+                            ],
+                          ),
+                          Padding(
+                            padding: EdgeInsets.symmetric(
+                                horizontal: size.width * .05),
+                            child: Divider(),
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: size.height * .1,
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          exit(0);
+                        },
+                        child: Column(
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal: size.width * .05),
+                                  child: Row(
+                                    children: [
+                                      Icon(
+                                        Icons.exit_to_app_outlined,
+                                        color: Colors.amber,
+                                      ),
+                                      SizedBox(
+                                        width: size.width * .03,
+                                      ),
+                                      Text("خروج"),
+                                    ],
+                                  ),
+                                ),
+                                Icon(Icons.arrow_forward_ios_outlined,
+                                    size: size.width * .04,
+                                    color: Colors.amber),
+                              ],
+                            ),
+                            Padding(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: size.width * .05),
+                              child: Divider(),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
               ),
-              child: Drawer(),
             ),
           ),
-          bottomNavigationBar: AnimatedBottomNavigationBar(
-            backgroundColor: Colors.white24,
-            inactiveColor: Colors.white,
-            activeColor: Colors.amber,
-            icons: [
-              Icons.home,
-              Icons.local_library_outlined,
-              Icons.assessment_outlined,
-              Icons.call,
+          bottomNavigationBar: CurvedNavigationBar(
+            height: 60,
+            backgroundColor: Colors.black38,
+            index: _bottomNavIndex,
+            key: _bottomNavigationKey,
+            items: <Widget>[
+              Icon(Icons.home, size: 30),
+              Icon(Icons.call, size: 30),
+              Icon(Icons.assessment_outlined, size: 30),
+              Icon(Icons.local_library_outlined, size: 30),
             ],
-            activeIndex: _bottomNavIndex,
-            gapLocation: GapLocation.center,
-            notchSmoothness: NotchSmoothness.verySmoothEdge,
-            // leftCornerRadius: 32,
-            // rightCornerRadius: 32,
-            onTap: (index) => setState(() {
-              _bottomNavIndex = index;
-              pageController.animateToPage(index,
-                  duration: Duration(milliseconds: 300), curve: Curves.bounceIn);
-            }),
-            //other params
+            onTap: (index) {
+              setState(() {
+                _bottomNavIndex = index;
+                pageController.jumpToPage(index);
+              });
+            },
           ),
-          backgroundColor: Colors.transparent,
+          backgroundColor: Colors.white,
           appBar: AppBar(
             centerTitle: true,
             elevation: 0,
-            leading:  GestureDetector(
-                onTap: (){
+            leading: GestureDetector(
+                onTap: () {
                   _key.currentState.openDrawer();
                 },
-                child: Icon(Icons.menu , color: Colors.white,)),
+                child: Icon(
+                  Icons.menu,
+                  color: Colors.white,
+                )),
             iconTheme: IconThemeData(color: Colors.black),
-            backgroundColor: Colors.black,
-            title: Text("اندومتریوز"),
+            backgroundColor: Colors.amber,
+            title: (_bottomNavIndex == 0)
+                ? Text("اندومتریوز")
+                : (_bottomNavIndex == 1)
+                    ? Text("تماس با ما")
+                    : (_bottomNavIndex == 2)
+                        ? Text("ارزشیابی")
+                        : Text("درباره ما"),
           ),
           body: Container(
             height: size.height,
@@ -139,9 +398,12 @@ class _HomeScreenState extends State<HomeScreen> {
                 });
               },
               children: [
-                _buildGridViewMeno(),
-                Container(),
-                Container(),
+                _buildGridViewMenu(),
+                ContactUsScreen(),
+                RateAppScreen(),
+                Center(
+                  child: Text("درباره ما"),
+                ),
               ],
             ),
           ),
@@ -170,7 +432,7 @@ class _HomeScreenState extends State<HomeScreen> {
               width: size.width * .25,
               padding: EdgeInsets.symmetric(vertical: size.height * .01),
               decoration: BoxDecoration(
-                  color: Color(0xffFFD700),
+                  color: Colors.black12,
                   borderRadius: BorderRadius.circular(15),
                   boxShadow: [
                     BoxShadow(
@@ -184,7 +446,10 @@ class _HomeScreenState extends State<HomeScreen> {
                 children: [
                   Flexible(
                     flex: 1,
-                    child: Image.asset(item.icon),
+                    child: Image.asset(
+                      item.icon,
+                      color: Colors.amber,
+                    ),
                   ),
                   Flexible(
                     flex: 1,
@@ -217,7 +482,7 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  _buildGridViewMeno() {
+  _buildGridViewMenu() {
     return AnimationLimiter(
       child: GridView.builder(
           itemCount: mainList.length,

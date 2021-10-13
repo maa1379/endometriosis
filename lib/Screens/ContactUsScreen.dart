@@ -13,9 +13,25 @@ class ContactUsScreen extends StatelessWidget {
       color: Colors.white,
       child: Column(
         children: [
+          Align(
+            alignment: Alignment.topLeft,
+            child: GestureDetector(
+              onTap: (){
+                Navigator.of(context).pop();
+              },
+              child: Container(
+                margin: EdgeInsets.only(top: size.height * .05),
+                height: size.height * .1,
+                width: size.width * .1,
+                decoration: BoxDecoration(
+                    color: Colors.amber,
+                    borderRadius: BorderRadius.only(topRight: Radius.circular(100),bottomRight: Radius.circular(100))
+                ),
+                child: Icon(Icons.arrow_back_ios_outlined),
+              ),
+            ),
+          ),
           SizedBox(height: size.height *.1,),
-
-          SizedBox(height: size.height *.2,),
           AutoSizeText(
             "برای ارتباط با ما میتوانید با آدرس زیر به ما ایمیل بزنید و با ما در ارتباط باشید",
             maxFontSize: 28,
