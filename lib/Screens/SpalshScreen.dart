@@ -17,7 +17,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     Future.delayed(
-      Duration(seconds: 6),
+      Duration(seconds: 2),
     ).then(
       (value) {
         NavHelper.pushR(context, HomeScreen());
@@ -43,7 +43,7 @@ class _SplashScreenState extends State<SplashScreen> {
             Padding(
               padding: EdgeInsets.symmetric(horizontal: size.width * .1 ,),
               child: AutoSizeText(
-                "به برنامه کاربردی آموزشی اندومتریوز خوش آمدید",
+                "به برنامه کاربردی آموزشی بیماری اندومتریوز خوش آمدید",
                 maxFontSize: 22,
                 minFontSize: 10,
                 maxLines: 2,

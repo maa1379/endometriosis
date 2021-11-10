@@ -3,10 +3,13 @@ import 'dart:io';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:endometriosis/Models/MainModel.dart';
+import 'package:endometriosis/Screens/InvaiteFreend.dart';
+import 'package:endometriosis/helpers/AlertHelper.dart';
 import 'package:endometriosis/helpers/NavHelper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'ContactUsScreen.dart';
+import 'ContactUsWidget.dart';
 import 'RateAppScreen.dart';
 import 'SingleScreen.dart';
 import 'SingleScreen2.dart';
@@ -153,7 +156,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       GestureDetector(
                         onTap: (){
-
+                          NavHelper.push(context, AboutUsScreen());
                         },
                         child: Column(
                           children: [
@@ -232,75 +235,46 @@ class _HomeScreenState extends State<HomeScreen> {
                       SizedBox(
                         height: size.height * .02,
                       ),
-                      Column(
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Padding(
-                                padding: EdgeInsets.symmetric(
-                                    horizontal: size.width * .05),
-                                child: Row(
-                                  children: [
-                                    Icon(
-                                      Icons.share_outlined,
-                                      color: Colors.amber,
-                                    ),
-                                    SizedBox(
-                                      width: size.width * .03,
-                                    ),
-                                    Text("معرفی به دوستان"),
-                                  ],
+                      GestureDetector(
+                        onTap: () {
+                          NavHelper.push(context, InvaiteFreend());
+                        },
+                        child: Column(
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal: size.width * .05),
+                                  child: Row(
+                                    children: [
+                                      Icon(
+                                        Icons.local_hospital_outlined,
+                                        color: Colors.amber,
+                                      ),
+                                      SizedBox(
+                                        width: size.width * .03,
+                                      ),
+                                      Text("معرفی به دوستان"),
+                                    ],
+                                  ),
                                 ),
-                              ),
-                              Icon(Icons.arrow_forward_ios_outlined,
-                                  size: size.width * .04, color: Colors.amber),
-                            ],
-                          ),
-                          Padding(
-                            padding: EdgeInsets.symmetric(
-                                horizontal: size.width * .05),
-                            child: Divider(),
-                          ),
-                        ],
+                                Icon(Icons.arrow_forward_ios_outlined,
+                                    size: size.width * .04,
+                                    color: Colors.amber),
+                              ],
+                            ),
+                            Padding(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: size.width * .05),
+                              child: Divider(),
+                            ),
+                          ],
+                        ),
                       ),
                       SizedBox(
                         height: size.height * .02,
-                      ),
-                      Column(
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Padding(
-                                padding: EdgeInsets.symmetric(
-                                    horizontal: size.width * .05),
-                                child: Row(
-                                  children: [
-                                    Icon(
-                                      Icons.mail_outline_outlined,
-                                      color: Colors.amber,
-                                    ),
-                                    SizedBox(
-                                      width: size.width * .03,
-                                    ),
-                                    Text("با نظر خود مارا حمایت کنید"),
-                                  ],
-                                ),
-                              ),
-                              Icon(Icons.arrow_forward_ios_outlined,
-                                  size: size.width * .04, color: Colors.amber),
-                            ],
-                          ),
-                          Padding(
-                            padding: EdgeInsets.symmetric(
-                                horizontal: size.width * .05),
-                            child: Divider(),
-                          ),
-                        ],
-                      ),
-                      SizedBox(
-                        height: size.height * .1,
                       ),
                       GestureDetector(
                         onTap: () {
@@ -381,7 +355,7 @@ class _HomeScreenState extends State<HomeScreen> {
             title: (_bottomNavIndex == 0)
                 ? Text("اندومتریوز")
                 : (_bottomNavIndex == 1)
-                    ? Text("تماس با ما")
+                    ? Text("ارتباط با ما")
                     : (_bottomNavIndex == 2)
                         ? Text("ارزشیابی")
                         : Text("درباره ما"),
@@ -396,14 +370,15 @@ class _HomeScreenState extends State<HomeScreen> {
                 setState(() {
                   _bottomNavIndex = page;
                 });
+                if(page == 2){
+                  AlertHelpers.noDesignAlertDialog(context: context,size: size);
+                }
               },
               children: [
                 _buildGridViewMenu(),
-                ContactUsScreen(),
+                ContactUsWidget(),
                 RateAppScreen(),
-                Center(
-                  child: Text("درباره ما"),
-                ),
+                AboutUsWidget(),
               ],
             ),
           ),
